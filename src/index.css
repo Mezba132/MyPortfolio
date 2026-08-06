@@ -1,5 +1,7 @@
 @import "tailwindcss";
 
+@variant dark (&:where(.dark, .dark *));
+
 @layer base {
   :root {
     color-scheme: light dark;
@@ -36,12 +38,19 @@
 
   /* Bento grid glass card styling */
   .bento-card {
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.01) 100%);
-    background-color: #0a0f1d;
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    background-color: #ffffff;
+    border: 1px solid rgba(226, 232, 240, 0.8);
+    box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.05);
     border-radius: 1.5rem; /* rounded-3xl */
     backdrop-filter: blur(12px);
     transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .dark .bento-card {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.01) 100%);
+    background-color: #0a0f1d;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: none;
   }
 
   .bento-card:hover {
@@ -50,10 +59,15 @@
   }
 
   .bento-card-indigo {
-    background: linear-gradient(135deg, rgba(79, 70, 229, 0.15) 0%, rgba(10, 15, 29, 0.8) 100%);
+    background: linear-gradient(135deg, rgba(99, 102, 241, 0.08) 0%, rgba(255, 255, 255, 0.95) 100%);
     border: 1px solid rgba(99, 102, 241, 0.25);
     border-radius: 1.5rem;
     backdrop-filter: blur(12px);
+  }
+
+  .dark .bento-card-indigo {
+    background: linear-gradient(135deg, rgba(79, 70, 229, 0.15) 0%, rgba(10, 15, 29, 0.8) 100%);
+    border: 1px solid rgba(99, 102, 241, 0.25);
   }
 }
 

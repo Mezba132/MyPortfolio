@@ -125,16 +125,16 @@ export const Projects: React.FC<ProjectsProps> = ({ projects }) => {
               className="group rounded-3xl bg-white/80 dark:bg-[#0a0f1d] border border-slate-200 dark:border-white/10 overflow-hidden shadow-sm dark:shadow-2xl hover:border-indigo-500/50 transition-all duration-300 hover:-translate-y-1.5 flex flex-col h-full backdrop-blur-md"
             >
               {/* Card Image Container */}
-              <div className="relative h-52 overflow-hidden bg-slate-950">
+              <div className="relative h-52 overflow-hidden bg-slate-100 dark:bg-slate-950">
                 <img
                   src={project.image}
                   alt={project.title}
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#0a0f1d] via-transparent to-transparent opacity-90" />
+                <div className="absolute inset-0 bg-gradient-to-t from-white/80 dark:from-[#0a0f1d] via-transparent to-transparent opacity-90" />
 
                 {/* Category Badge */}
-                <div className="absolute top-4 left-4 bg-slate-900/90 backdrop-blur-md border border-white/10 text-white text-[10px] font-bold px-3 py-1 rounded-full shadow-md">
+                <div className="absolute top-4 left-4 bg-white/90 dark:bg-slate-900/90 backdrop-blur-md border border-slate-200 dark:border-white/10 text-slate-900 dark:text-white text-[10px] font-bold px-3 py-1 rounded-full shadow-md">
                   {project.category}
                 </div>
 

@@ -25,7 +25,7 @@ export const initialPortfolioData: PortfolioData = {
     happyClients: 100,
     enterpriseProjects: 20,
     aiIntegrations: 15,
-    avatarUrl: 'assets/photo.png',
+    avatarUrl: '/assets/photo.png',
     resumeUrl: '#resume'
   },
 
@@ -729,7 +729,7 @@ When applied to an enterprise e-commerce platform, API response times dropped fr
       readTime: '6 min read',
       author: {
         name: 'Nokibul Amin Mezba',
-        avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=200&q=80'
+        avatar: '/assets/photo.png'
       },
       category: 'Full Stack',
       tags: ['Next.js 15', 'NestJS', 'Redis', 'TypeScript', 'Performance'],
@@ -793,7 +793,7 @@ By pairing Gemini 3.6 Flash with typed JSON schemas, AI tasks become reliable, r
       readTime: '8 min read',
       author: {
         name: 'Nokibul Amin Mezba',
-        avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=200&q=80'
+        avatar: '/assets/photo.png'
       },
       category: 'AI & Machine Learning',
       tags: ['Gemini AI', 'OpenAI', 'Node.js', 'AI Engineering', 'RAG'],
@@ -828,7 +828,7 @@ Stay tuned for part two where we cover Docker container vulnerability scanning!`
       readTime: '5 min read',
       author: {
         name: 'Nokibul Amin Mezba',
-        avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=200&q=80'
+        avatar: '/assets/photo.png'
       },
       category: 'Security',
       tags: ['Security', 'JWT', 'NestJS', 'Express', 'Auth'],

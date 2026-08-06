@@ -171,11 +171,11 @@ export const CommandPalette: React.FC<CommandPaletteProps> = ({
           animate={{ opacity: 1, scale: 1, y: 0 }}
           exit={{ opacity: 0, scale: 0.95, y: -20 }}
           transition={{ duration: 0.15 }}
-          className="relative w-full max-w-2xl bg-slate-900 dark:bg-slate-900 border border-slate-700/80 rounded-2xl shadow-2xl overflow-hidden z-10 flex flex-col text-slate-200"
+          className="relative w-full max-w-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700/80 rounded-2xl shadow-2xl overflow-hidden z-10 flex flex-col text-slate-800 dark:text-slate-200"
         >
           {/* Search Header Input */}
-          <div className="flex items-center px-4 py-3.5 border-b border-slate-800 bg-slate-950/60">
-            <Search className="w-5 h-5 text-indigo-400 mr-3 shrink-0" />
+          <div className="flex items-center px-4 py-3.5 border-b border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950/60">
+            <Search className="w-5 h-5 text-indigo-600 dark:text-indigo-400 mr-3 shrink-0" />
             <input
               ref={inputRef}
               type="text"
@@ -186,26 +186,26 @@ export const CommandPalette: React.FC<CommandPaletteProps> = ({
               }}
               onKeyDown={handleKeyDown}
               placeholder="Search projects, skills, sections, or ask AI..."
-              className="w-full bg-transparent text-slate-100 placeholder-slate-500 text-sm focus:outline-none"
+              className="w-full bg-transparent text-slate-900 dark:text-slate-100 placeholder-slate-400 dark:placeholder-slate-500 text-sm focus:outline-none"
             />
             {query && (
               <button
                 onClick={() => setQuery('')}
-                className="p-1 rounded text-slate-400 hover:text-white mr-2"
+                className="p-1 rounded text-slate-400 hover:text-slate-900 dark:hover:text-white mr-2"
               >
                 <X className="w-4 h-4" />
               </button>
             )}
-            <kbd className="hidden sm:inline-block px-2 py-0.5 text-[10px] font-mono bg-slate-800 border border-slate-700 rounded text-slate-400">
+            <kbd className="hidden sm:inline-block px-2 py-0.5 text-[10px] font-mono bg-slate-200 dark:bg-slate-800 border border-slate-300 dark:border-slate-700 rounded text-slate-600 dark:text-slate-400">
               ESC
             </kbd>
           </div>
 
           {/* Search Results List */}
-          <div className="max-h-96 overflow-y-auto p-2 divide-y divide-slate-800/40">
+          <div className="max-h-96 overflow-y-auto p-2 divide-y divide-slate-100 dark:divide-slate-800/40">
             {filtered.length === 0 ? (
-              <div className="p-8 text-center text-slate-400 text-sm">
-                No results found for &quot;<span className="text-white font-medium">{query}</span>&quot;
+              <div className="p-8 text-center text-slate-500 dark:text-slate-400 text-sm">
+                No results found for &quot;<span className="text-slate-900 dark:text-white font-medium">{query}</span>&quot;
               </div>
             ) : (
               filtered.map((item, index) => {
@@ -221,20 +221,20 @@ export const CommandPalette: React.FC<CommandPaletteProps> = ({
                     onMouseEnter={() => setSelectedIndex(index)}
                     className={`w-full text-left px-3.5 py-2.5 rounded-xl flex items-center justify-between transition-colors cursor-pointer ${
                       isSelected
-                        ? 'bg-indigo-600/20 text-white border border-indigo-500/30'
-                        : 'text-slate-300 hover:bg-slate-800/50'
+                        ? 'bg-indigo-50 dark:bg-indigo-600/20 text-indigo-900 dark:text-white border border-indigo-200 dark:border-indigo-500/30'
+                        : 'text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800/50'
                     }`}
                   >
                     <div className="flex items-center gap-3 min-w-0 pr-2">
-                      <div className={`p-2 rounded-lg shrink-0 ${isSelected ? 'bg-indigo-600 text-white' : 'bg-slate-800 text-slate-400'}`}>
+                      <div className={`p-2 rounded-lg shrink-0 ${isSelected ? 'bg-indigo-600 text-white' : 'bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400'}`}>
                         <Icon className="w-4 h-4" />
                       </div>
                       <div className="truncate">
-                        <div className="text-xs font-semibold text-slate-100 truncate">
+                        <div className="text-xs font-semibold text-slate-900 dark:text-slate-100 truncate">
                           {item.title}
                         </div>
                         {item.subtitle && (
-                          <div className="text-[11px] text-slate-400 truncate">
+                          <div className="text-[11px] text-slate-500 dark:text-slate-400 truncate">
                             {item.subtitle}
                           </div>
                         )}
@@ -242,10 +242,10 @@ export const CommandPalette: React.FC<CommandPaletteProps> = ({
                     </div>
 
                     <div className="flex items-center gap-2 shrink-0">
-                      <span className="text-[10px] uppercase font-bold tracking-wider px-2 py-0.5 rounded bg-slate-800/80 text-indigo-300 border border-slate-700/50">
+                      <span className="text-[10px] uppercase font-bold tracking-wider px-2 py-0.5 rounded bg-slate-100 dark:bg-slate-800/80 text-indigo-600 dark:text-indigo-300 border border-slate-200 dark:border-slate-700/50">
                         {item.section}
                       </span>
-                      <ArrowRight className={`w-3.5 h-3.5 transition-transform ${isSelected ? 'translate-x-1 text-indigo-400' : 'text-slate-600'}`} />
+                      <ArrowRight className={`w-3.5 h-3.5 transition-transform ${isSelected ? 'translate-x-1 text-indigo-600 dark:text-indigo-400' : 'text-slate-400 dark:text-slate-600'}`} />
                     </div>
                   </button>
                 );
@@ -254,13 +254,13 @@ export const CommandPalette: React.FC<CommandPaletteProps> = ({
           </div>
 
           {/* Footer Shortcuts hint */}
-          <div className="px-4 py-2.5 bg-slate-950/80 border-t border-slate-800/80 flex items-center justify-between text-[11px] text-slate-500">
+          <div className="px-4 py-2.5 bg-slate-50 dark:bg-slate-950/80 border-t border-slate-200 dark:border-slate-800/80 flex items-center justify-between text-[11px] text-slate-600 dark:text-slate-400">
             <div className="flex items-center gap-3">
-              <span><kbd className="px-1.5 py-0.5 bg-slate-800 rounded text-slate-400 font-mono">↑↓</kbd> Navigate</span>
-              <span><kbd className="px-1.5 py-0.5 bg-slate-800 rounded text-slate-400 font-mono">↵</kbd> Select</span>
-              <span><kbd className="px-1.5 py-0.5 bg-slate-800 rounded text-slate-400 font-mono">ESC</kbd> Close</span>
+              <span><kbd className="px-1.5 py-0.5 bg-slate-200 dark:bg-slate-800 rounded text-slate-700 dark:text-slate-400 font-mono">↑↓</kbd> Navigate</span>
+              <span><kbd className="px-1.5 py-0.5 bg-slate-200 dark:bg-slate-800 rounded text-slate-700 dark:text-slate-400 font-mono">↵</kbd> Select</span>
+              <span><kbd className="px-1.5 py-0.5 bg-slate-200 dark:bg-slate-800 rounded text-slate-700 dark:text-slate-400 font-mono">ESC</kbd> Close</span>
             </div>
-            <span className="text-indigo-400 font-medium">Quick Search</span>
+            <span className="text-indigo-600 dark:text-indigo-400 font-medium">Quick Search</span>
           </div>
         </motion.div>
       </div>

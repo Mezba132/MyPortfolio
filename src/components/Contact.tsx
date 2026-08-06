@@ -68,17 +68,17 @@ export const Contact: React.FC<ContactProps> = ({ data, onContactSubmitted }) =>
         
         {/* Header */}
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-indigo-300 text-xs font-bold uppercase tracking-widest mb-3">
-            <Mail className="w-4 h-4 text-indigo-400" />
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-indigo-600 dark:text-indigo-300 text-xs font-bold uppercase tracking-widest mb-3">
+            <Mail className="w-4 h-4 text-indigo-600 dark:text-indigo-400" />
             <span>Initiate Collaboration</span>
           </div>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white font-display tracking-tight">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-slate-900 dark:text-white font-display tracking-tight">
             Let's Build Something{' '}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 via-purple-300 to-blue-400">
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 via-purple-600 to-blue-600 dark:from-indigo-400 dark:via-purple-300 dark:to-blue-400">
               Extraordinary Together
             </span>
           </h2>
-          <p className="mt-4 text-slate-400 text-sm sm:text-base">
+          <p className="mt-4 text-slate-600 dark:text-slate-400 text-sm sm:text-base">
             Have a project in mind, an enterprise role to discuss, or a custom AI system to build? Get in touch today.
           </p>
         </div>
@@ -94,63 +94,63 @@ export const Contact: React.FC<ContactProps> = ({ data, onContactSubmitted }) =>
             className="lg:col-span-5 space-y-6"
           >
             {/* Contact Card */}
-            <div className="p-8 rounded-3xl bg-[#0a0f1d] border border-white/10 shadow-2xl space-y-6 backdrop-blur-md">
-              <h3 className="text-xl font-bold text-white font-display">
+            <div className="p-8 rounded-3xl bg-white/80 dark:bg-[#0a0f1d] border border-slate-200 dark:border-white/10 shadow-sm dark:shadow-2xl space-y-6 backdrop-blur-md">
+              <h3 className="text-xl font-bold text-slate-900 dark:text-white font-display">
                 Direct Contact Information
               </h3>
 
               <div className="space-y-4">
                 <a
                   href={`mailto:${data.email}`}
-                  className="flex items-center gap-4 p-4 rounded-2xl bg-white/5 border border-white/10 hover:border-indigo-500 transition-colors group"
+                  className="flex items-center gap-4 p-4 rounded-2xl bg-slate-50 dark:bg-white/5 border border-slate-200 dark:border-white/10 hover:border-indigo-500 transition-colors group"
                 >
-                  <div className="w-12 h-12 rounded-xl bg-indigo-500/10 border border-indigo-500/20 text-indigo-400 flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform">
+                  <div className="w-12 h-12 rounded-xl bg-indigo-500/10 border border-indigo-500/20 text-indigo-600 dark:text-indigo-400 flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform">
                     <Mail className="w-5 h-5" />
                   </div>
                   <div>
-                    <span className="text-[10px] font-bold uppercase text-slate-500 block">Email Address</span>
-                    <span className="text-sm font-bold text-white font-mono">{data.email}</span>
+                    <span className="text-[10px] font-bold uppercase text-slate-500 dark:text-slate-400 block">Email Address</span>
+                    <span className="text-sm font-bold text-slate-900 dark:text-white font-mono">{data.email}</span>
                   </div>
                 </a>
 
                 <a
                   href={`tel:${data.phone}`}
-                  className="flex items-center gap-4 p-4 rounded-2xl bg-white/5 border border-white/10 hover:border-emerald-500 transition-colors group"
+                  className="flex items-center gap-4 p-4 rounded-2xl bg-slate-50 dark:bg-white/5 border border-slate-200 dark:border-white/10 hover:border-emerald-500 transition-colors group"
                 >
-                  <div className="w-12 h-12 rounded-xl bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform">
+                  <div className="w-12 h-12 rounded-xl bg-emerald-500/10 border border-emerald-500/20 text-emerald-600 dark:text-emerald-400 flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform">
                     <Phone className="w-5 h-5" />
                   </div>
                   <div>
-                    <span className="text-[10px] font-bold uppercase text-slate-500 block">Direct Line & WhatsApp</span>
-                    <span className="text-sm font-bold text-white font-mono">{data.phone}</span>
+                    <span className="text-[10px] font-bold uppercase text-slate-500 dark:text-slate-400 block">Direct Line & WhatsApp</span>
+                    <span className="text-sm font-bold text-slate-900 dark:text-white font-mono">{data.phone}</span>
                   </div>
                 </a>
 
-                <div className="flex items-center gap-4 p-4 rounded-2xl bg-white/5 border border-white/10">
-                  <div className="w-12 h-12 rounded-xl bg-purple-500/10 border border-purple-500/20 text-purple-400 flex items-center justify-center shrink-0">
+                <div className="flex items-center gap-4 p-4 rounded-2xl bg-slate-50 dark:bg-white/5 border border-slate-200 dark:border-white/10">
+                  <div className="w-12 h-12 rounded-xl bg-purple-500/10 border border-purple-500/20 text-purple-600 dark:text-purple-400 flex items-center justify-center shrink-0">
                     <MapPin className="w-5 h-5" />
                   </div>
                   <div>
-                    <span className="text-[10px] font-bold uppercase text-slate-500 block">Physical Location</span>
-                    <span className="text-sm font-bold text-white">{data.address}</span>
+                    <span className="text-[10px] font-bold uppercase text-slate-500 dark:text-slate-400 block">Physical Location</span>
+                    <span className="text-sm font-bold text-slate-900 dark:text-white">{data.address}</span>
                   </div>
                 </div>
               </div>
 
               {/* Status Badge */}
-              <div className="p-4 rounded-2xl bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-semibold flex items-center gap-2">
-                <span className="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse" />
+              <div className="p-4 rounded-2xl bg-emerald-500/10 border border-emerald-500/20 text-emerald-700 dark:text-emerald-400 text-xs font-semibold flex items-center gap-2">
+                <span className="w-2.5 h-2.5 rounded-full bg-emerald-500 dark:bg-emerald-400 animate-pulse" />
                 <span>Available for immediate freelance sprints or full-time roles.</span>
               </div>
             </div>
 
             {/* Quick Action Badges */}
-            <div className="p-6 rounded-3xl bg-indigo-950/40 border border-indigo-500/20 text-white space-y-3 backdrop-blur-md">
+            <div className="p-6 rounded-3xl bg-indigo-50 dark:bg-indigo-950/40 border border-indigo-200 dark:border-indigo-500/20 text-slate-900 dark:text-white space-y-3 backdrop-blur-md">
               <h4 className="font-bold text-sm font-display flex items-center gap-2">
-                <Clock className="w-4 h-4 text-indigo-400" />
+                <Clock className="w-4 h-4 text-indigo-600 dark:text-indigo-400" />
                 <span>Fast Response Time Guaranteed</span>
               </h4>
-              <p className="text-xs text-slate-300 leading-relaxed font-light">
+              <p className="text-xs text-slate-600 dark:text-slate-300 leading-relaxed font-light">
                 All inquiries submitted through this portal are directly processed and answered within 2 to 4 business hours.
               </p>
             </div>
@@ -164,13 +164,13 @@ export const Contact: React.FC<ContactProps> = ({ data, onContactSubmitted }) =>
             transition={{ duration: 0.5 }}
             className="lg:col-span-7"
           >
-            <div className="p-8 sm:p-10 rounded-3xl bg-[#0a0f1d] border border-white/10 shadow-2xl space-y-6 backdrop-blur-md">
+            <div className="p-8 sm:p-10 rounded-3xl bg-white/80 dark:bg-[#0a0f1d] border border-slate-200 dark:border-white/10 shadow-sm dark:shadow-2xl space-y-6 backdrop-blur-md">
               
               <div>
-                <h3 className="text-2xl font-bold text-white font-display">
+                <h3 className="text-2xl font-bold text-slate-900 dark:text-white font-display">
                   Send a Direct Message
                 </h3>
-                <p className="text-xs text-slate-400 mt-1">
+                <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">
                   Fill out the form below to receive a custom project scope proposal.
                 </p>
               </div>
@@ -202,7 +202,7 @@ export const Contact: React.FC<ContactProps> = ({ data, onContactSubmitted }) =>
 
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div className="space-y-1">
-                      <label className="text-xs font-bold text-slate-300">
+                      <label className="text-xs font-bold text-slate-700 dark:text-slate-300">
                         Your Full Name
                       </label>
                       <input
@@ -211,12 +211,12 @@ export const Contact: React.FC<ContactProps> = ({ data, onContactSubmitted }) =>
                         placeholder="John Doe"
                         value={formData.name}
                         onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                        className="w-full p-3 rounded-2xl bg-white/5 border border-white/10 text-xs font-semibold text-white placeholder-slate-500 focus:outline-none focus:border-indigo-500"
+                        className="w-full p-3 rounded-2xl bg-slate-50 dark:bg-white/5 border border-slate-200 dark:border-white/10 text-xs font-semibold text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:border-indigo-500"
                       />
                     </div>
 
                     <div className="space-y-1">
-                      <label className="text-xs font-bold text-slate-300">
+                      <label className="text-xs font-bold text-slate-700 dark:text-slate-300">
                         Your Email Address
                       </label>
                       <input
@@ -225,14 +225,14 @@ export const Contact: React.FC<ContactProps> = ({ data, onContactSubmitted }) =>
                         placeholder="john@company.com"
                         value={formData.email}
                         onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                        className="w-full p-3 rounded-2xl bg-white/5 border border-white/10 text-xs font-semibold text-white placeholder-slate-500 focus:outline-none focus:border-indigo-500"
+                        className="w-full p-3 rounded-2xl bg-slate-50 dark:bg-white/5 border border-slate-200 dark:border-white/10 text-xs font-semibold text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:border-indigo-500"
                       />
                     </div>
                   </div>
 
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div className="space-y-1">
-                      <label className="text-xs font-bold text-slate-300">
+                      <label className="text-xs font-bold text-slate-700 dark:text-slate-300">
                         Subject / Topic
                       </label>
                       <input
@@ -241,29 +241,29 @@ export const Contact: React.FC<ContactProps> = ({ data, onContactSubmitted }) =>
                         placeholder="Project Inquiry, Enterprise Role..."
                         value={formData.subject}
                         onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
-                        className="w-full p-3 rounded-2xl bg-white/5 border border-white/10 text-xs font-semibold text-white placeholder-slate-500 focus:outline-none focus:border-indigo-500"
+                        className="w-full p-3 rounded-2xl bg-slate-50 dark:bg-white/5 border border-slate-200 dark:border-white/10 text-xs font-semibold text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:border-indigo-500"
                       />
                     </div>
 
                     <div className="space-y-1">
-                      <label className="text-xs font-bold text-slate-300">
+                      <label className="text-xs font-bold text-slate-700 dark:text-slate-300">
                         Estimated Budget Range
                       </label>
                       <select
                         value={formData.budget}
                         onChange={(e) => setFormData({ ...formData, budget: e.target.value })}
-                        className="w-full p-3 rounded-2xl bg-white/5 border border-white/10 text-xs font-semibold text-white focus:outline-none focus:border-indigo-500"
+                        className="w-full p-3 rounded-2xl bg-slate-50 dark:bg-white/5 border border-slate-200 dark:border-white/10 text-xs font-semibold text-slate-900 dark:text-white focus:outline-none focus:border-indigo-500"
                       >
-                        <option value="Under $1,000" className="bg-slate-900 text-white">Under $1,000</option>
-                        <option value="$1,000 - $5,000" className="bg-slate-900 text-white">$1,000 - $5,000</option>
-                        <option value="$5,000 - $15,000" className="bg-slate-900 text-white">$5,000 - $15,000</option>
-                        <option value="$15,000+" className="bg-slate-900 text-white">$15,000+ (Enterprise)</option>
+                        <option value="Under $1,000" className="bg-white dark:bg-slate-900 text-slate-900 dark:text-white">Under $1,000</option>
+                        <option value="$1,000 - $5,000" className="bg-white dark:bg-slate-900 text-slate-900 dark:text-white">$1,000 - $5,000</option>
+                        <option value="$5,000 - $15,000" className="bg-white dark:bg-slate-900 text-slate-900 dark:text-white">$5,000 - $15,000</option>
+                        <option value="$15,000+" className="bg-white dark:bg-slate-900 text-slate-900 dark:text-white">$15,000+ (Enterprise)</option>
                       </select>
                     </div>
                   </div>
 
                   <div className="space-y-1">
-                    <label className="text-xs font-bold text-slate-300">
+                    <label className="text-xs font-bold text-slate-700 dark:text-slate-300">
                       Message & Requirements
                     </label>
                     <textarea
@@ -272,7 +272,7 @@ export const Contact: React.FC<ContactProps> = ({ data, onContactSubmitted }) =>
                       placeholder="Describe your vision, timeline, tech stack, or goal..."
                       value={formData.message}
                       onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                      className="w-full p-3 rounded-2xl bg-white/5 border border-white/10 text-xs font-semibold text-white placeholder-slate-500 focus:outline-none focus:border-indigo-500"
+                      className="w-full p-3 rounded-2xl bg-slate-50 dark:bg-white/5 border border-slate-200 dark:border-white/10 text-xs font-semibold text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:border-indigo-500"
                     />
                   </div>
 

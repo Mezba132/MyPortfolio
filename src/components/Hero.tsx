@@ -37,6 +37,18 @@ export const Hero: React.FC<HeroProps> = ({
   const [currentSubtitleIndex, setCurrentSubtitleIndex] = useState(0);
   const [typedText, setTypedText] = useState('');
   const [isDeleting, setIsDeleting] = useState(false);
+  const [downloading, setDownloading] = useState(false);
+
+  const handleDownloadClick = async () => {
+    setDownloading(true);
+    try {
+      await onTriggerDownload();
+    } catch (e) {
+      console.error(e);
+    } finally {
+      setTimeout(() => setDownloading(false), 1500);
+    }
+  };
 
   const subtitles = data.subtitles || [
     'Senior Full Stack & AI Specialist',
@@ -69,18 +81,18 @@ export const Hero: React.FC<HeroProps> = ({
   }, [typedText, isDeleting, currentSubtitleIndex, subtitles]);
 
   const technologies = [
-    { name: 'TypeScript', color: 'text-indigo-300' },
-    { name: 'Next.js 15', color: 'text-white' },
-    { name: 'NestJS', color: 'text-red-400' },
-    { name: 'Node.js', color: 'text-emerald-300' },
-    { name: 'GraphQL', color: 'text-pink-300' },
-    { name: 'Docker', color: 'text-cyan-300' },
-    { name: 'AWS Cloud', color: 'text-amber-300' },
-    { name: 'OpenAI API', color: 'text-blue-400' },
-    { name: 'Gemini AI', color: 'text-indigo-400' },
-    { name: 'PostgreSQL', color: 'text-sky-300' },
-    { name: 'Prisma ORM', color: 'text-teal-300' },
-    { name: 'Redis', color: 'text-orange-400' }
+    { name: 'TypeScript', color: 'text-indigo-600 dark:text-indigo-300' },
+    { name: 'Next.js 15', color: 'text-slate-900 dark:text-white' },
+    { name: 'NestJS', color: 'text-red-600 dark:text-red-400' },
+    { name: 'Node.js', color: 'text-emerald-700 dark:text-emerald-300' },
+    { name: 'GraphQL', color: 'text-pink-600 dark:text-pink-300' },
+    { name: 'Docker', color: 'text-cyan-700 dark:text-cyan-300' },
+    { name: 'AWS Cloud', color: 'text-amber-700 dark:text-amber-300' },
+    { name: 'OpenAI API', color: 'text-blue-600 dark:text-blue-400' },
+    { name: 'Gemini AI', color: 'text-indigo-600 dark:text-indigo-400' },
+    { name: 'PostgreSQL', color: 'text-sky-700 dark:text-sky-300' },
+    { name: 'Prisma ORM', color: 'text-teal-700 dark:text-teal-300' },
+    { name: 'Redis', color: 'text-orange-600 dark:text-orange-400' }
   ];
 
   return (
@@ -143,11 +155,12 @@ export const Hero: React.FC<HeroProps> = ({
               </button>
 
               <button
-                onClick={onTriggerDownload}
-                className="bg-slate-800/60 dark:bg-white/5 hover:bg-slate-800 dark:hover:bg-white/10 border border-slate-700 dark:border-white/10 backdrop-blur-sm px-5 py-3.5 rounded-2xl text-xs font-bold text-slate-200 dark:text-slate-300 transition-all cursor-pointer flex items-center gap-2"
+                onClick={handleDownloadClick}
+                disabled={downloading}
+                className="bg-indigo-50 hover:bg-indigo-100 dark:bg-white/5 dark:hover:bg-white/10 border border-indigo-200 dark:border-white/10 backdrop-blur-sm px-5 py-3.5 rounded-2xl text-xs font-bold text-indigo-900 dark:text-slate-300 transition-all cursor-pointer flex items-center gap-2 shadow-sm dark:shadow-none disabled:opacity-75"
               >
-                <Download className="w-4 h-4 text-blue-400" />
-                <span>Download Resume</span>
+                <Download className={`w-4 h-4 text-indigo-600 dark:text-blue-400 ${downloading ? 'animate-bounce' : ''}`} />
+                <span>{downloading ? 'Downloading PDF...' : 'Download Resume'}</span>
               </button>
 
               <button
@@ -166,7 +179,8 @@ export const Hero: React.FC<HeroProps> = ({
             <img
               src={data.avatarUrl}
               alt={data.name}
-              className="absolute inset-0 w-full h-full object-cover object-top transition-transform duration-700 ease-out group-hover:scale-110 pointer-events-none"
+              referrerPolicy="no-referrer"
+              className="absolute inset-0 w-full h-full object-cover object-top transition-transform duration-700 ease-out group-hover:scale-105 pointer-events-none"
             />
 
             {/* Gradient Overlay for Legibility */}

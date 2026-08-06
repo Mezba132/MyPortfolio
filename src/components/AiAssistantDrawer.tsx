@@ -173,7 +173,7 @@ export const AiAssistantDrawer: React.FC<AiAssistantDrawerProps> = ({ isOpen, on
 
             {/* Quick Prompts */}
             <div className="p-3 border-t border-slate-200 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-950/50">
-              <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider block mb-2">
+              <span className="text-[10px] font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider block mb-2">
                 Suggested Prompts
               </span>
               <div className="flex flex-wrap gap-1.5">

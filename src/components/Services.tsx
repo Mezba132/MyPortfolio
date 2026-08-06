@@ -61,17 +61,17 @@ export const Services: React.FC<ServicesProps> = ({ services, onNavigateContact 
         
         {/* Header */}
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-indigo-300 text-xs font-bold uppercase tracking-widest mb-3">
-            <Sparkles className="w-4 h-4 text-indigo-400" />
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-indigo-600 dark:text-indigo-300 text-xs font-bold uppercase tracking-widest mb-3">
+            <Sparkles className="w-4 h-4 text-indigo-600 dark:text-indigo-400" />
             <span>High-Value Engineering Solutions</span>
           </div>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white font-display tracking-tight">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-slate-900 dark:text-white font-display tracking-tight">
             Specialized Development &{' '}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 via-purple-300 to-blue-400">
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 via-purple-600 to-blue-600 dark:from-indigo-400 dark:via-purple-300 dark:to-blue-400">
               Consulting Services
             </span>
           </h2>
-          <p className="mt-4 text-slate-400 text-sm sm:text-base">
+          <p className="mt-4 text-slate-600 dark:text-slate-400 text-sm sm:text-base">
             Turnkey software solutions delivered with senior precision, clean architecture, and guaranteed performance.
           </p>
 
@@ -79,7 +79,7 @@ export const Services: React.FC<ServicesProps> = ({ services, onNavigateContact 
             onClick={() => setCalculatorOpen(true)}
             className="mt-6 inline-flex items-center gap-2 px-5 py-3 rounded-2xl bg-indigo-600 text-white font-bold text-xs shadow-lg shadow-indigo-500/25 hover:bg-indigo-500 cursor-pointer transition-transform hover:scale-105"
           >
-            <Calculator className="w-4 h-4 text-indigo-300" />
+            <Calculator className="w-4 h-4 text-indigo-200" />
             <span>Interactive Project Cost & Scope Estimator</span>
           </button>
         </div>
@@ -95,39 +95,39 @@ export const Services: React.FC<ServicesProps> = ({ services, onNavigateContact 
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: idx * 0.05 }}
-                className="p-8 rounded-3xl bg-[#0a0f1d] border border-white/10 shadow-2xl hover:border-indigo-500/50 transition-all duration-300 hover:-translate-y-1.5 flex flex-col justify-between group backdrop-blur-md"
+                className="p-8 rounded-3xl bg-white/80 dark:bg-[#0a0f1d] border border-slate-200 dark:border-white/10 shadow-sm dark:shadow-2xl hover:border-indigo-500/50 transition-all duration-300 hover:-translate-y-1.5 flex flex-col justify-between group backdrop-blur-md"
               >
                 <div className="space-y-4">
                   {/* Icon & Starting Price Tag */}
                   <div className="flex items-center justify-between">
-                    <div className="w-12 h-12 rounded-2xl bg-indigo-500/10 border border-indigo-500/20 text-indigo-400 flex items-center justify-center group-hover:scale-110 transition-transform">
+                    <div className="w-12 h-12 rounded-2xl bg-indigo-500/10 border border-indigo-500/20 text-indigo-600 dark:text-indigo-400 flex items-center justify-center group-hover:scale-110 transition-transform">
                       <Icon className="w-6 h-6" />
                     </div>
                     <div className="text-right">
-                      <span className="text-[10px] font-bold text-slate-500 uppercase tracking-wider block">Starting At</span>
-                      <span className="text-lg font-extrabold text-white font-mono">{srv.startingPrice}</span>
+                      <span className="text-[10px] font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider block">Starting At</span>
+                      <span className="text-lg font-extrabold text-slate-900 dark:text-white font-mono">{srv.startingPrice}</span>
                     </div>
                   </div>
 
                   {/* Title & Description */}
                   <div>
-                    <h3 className="text-xl font-bold text-white font-display mb-1 group-hover:text-indigo-400 transition-colors">
+                    <h3 className="text-xl font-bold text-slate-900 dark:text-white font-display mb-1 group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">
                       {srv.title}
                     </h3>
-                    <p className="text-xs font-semibold text-indigo-300 mb-2">
+                    <p className="text-xs font-semibold text-indigo-600 dark:text-indigo-300 mb-2">
                       {srv.tagline}
                     </p>
-                    <p className="text-xs text-slate-400 leading-relaxed font-light">
+                    <p className="text-xs text-slate-600 dark:text-slate-400 leading-relaxed font-light">
                       {srv.description}
                     </p>
                   </div>
 
                   {/* Deliverables List */}
                   <div className="pt-2">
-                    <h4 className="text-[11px] font-bold uppercase tracking-widest text-slate-400 mb-2">
+                    <h4 className="text-[11px] font-bold uppercase tracking-widest text-slate-500 dark:text-slate-400 mb-2">
                       What's Included
                     </h4>
-                    <ul className="space-y-1.5 text-xs text-slate-300">
+                    <ul className="space-y-1.5 text-xs text-slate-700 dark:text-slate-300">
                       {srv.deliverables.map((deliv, i) => (
                         <li key={i} className="flex items-start gap-2">
                           <CheckCircle2 className="w-3.5 h-3.5 text-indigo-400 shrink-0 mt-0.5" />
@@ -139,9 +139,9 @@ export const Services: React.FC<ServicesProps> = ({ services, onNavigateContact 
                 </div>
 
                 {/* Footer Action */}
-                <div className="pt-6 mt-6 border-t border-white/5 flex items-center justify-between">
-                  <span className="flex items-center gap-1 text-xs font-mono text-slate-400">
-                    <Clock className="w-3.5 h-3.5 text-indigo-400" />
+                <div className="pt-6 mt-6 border-t border-slate-200 dark:border-white/5 flex items-center justify-between">
+                  <span className="flex items-center gap-1 text-xs font-mono text-slate-600 dark:text-slate-400">
+                    <Clock className="w-3.5 h-3.5 text-indigo-600 dark:text-indigo-400" />
                     <span>Est: {srv.estimatedDelivery}</span>
                   </span>
 
@@ -150,7 +150,7 @@ export const Services: React.FC<ServicesProps> = ({ services, onNavigateContact 
                       setSelectedServiceId(srv.id);
                       setCalculatorOpen(true);
                     }}
-                    className="px-4 py-2 rounded-xl bg-white/5 border border-white/10 text-white text-xs font-bold hover:bg-indigo-600 transition-colors cursor-pointer flex items-center gap-1"
+                    className="px-4 py-2 rounded-xl bg-slate-100 dark:bg-white/5 border border-slate-200 dark:border-white/10 text-slate-800 dark:text-white text-xs font-bold hover:bg-indigo-600 hover:text-white transition-colors cursor-pointer flex items-center gap-1"
                   >
                     <span>Get Quote</span>
                     <ArrowRight className="w-3.5 h-3.5" />

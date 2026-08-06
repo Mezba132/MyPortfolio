@@ -1,12 +1,13 @@
 import express from 'express';
 import path from 'path';
 import { fileURLToPath } from 'url';
+import PDFDocument from 'pdfkit';
 import { GoogleGenAI } from '@google/genai';
 import { initialPortfolioData } from './src/data/portfolioData';
 import { PortfolioData, ContactMessage, ChatMessage } from './src/types';
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
+const currentFilename = typeof __filename !== 'undefined' ? __filename : fileURLToPath(import.meta.url);
+const currentDirname = typeof __dirname !== 'undefined' ? __dirname : path.dirname(currentFilename);
 
 async function startServer() {
   const app = express();
@@ -118,6 +119,111 @@ async function startServer() {
     });
   });
 
+  // Download official resume PDF document
+  app.get(['/api/resume/download', '/api/download-resume'], (req, res) => {
+    resumeDownloadsCount += 1;
+    portfolioState.stats.resumeDownloads += 1;
+
+    try {
+      res.setHeader('Access-Control-Allow-Origin', '*');
+      res.setHeader('Access-Control-Expose-Headers', 'Content-Disposition');
+      res.setHeader('Content-Type', 'application/pdf');
+      res.setHeader('Content-Disposition', 'attachment; filename="Nokibul_Amin_Mezba_Software_Engineer_Resume.pdf"');
+
+      const doc = new PDFDocument({ margin: 36, size: 'A4' });
+      doc.pipe(res);
+
+      // Header Name & Title
+      doc.fillColor('#0f172a').fontSize(22).font('Helvetica-Bold').text('Nokibul Amin Mezba');
+      doc.fillColor('#4338ca').fontSize(11).font('Helvetica-Bold').text('Software Engineer (5 Years Professional Experience)');
+      doc.fontSize(8.5).font('Helvetica').fillColor('#475569').text('Email: csmezba@gmail.com  |  Phone: 01752918411  |  Address: Boira, Khulna');
+      doc.fontSize(8.5).font('Helvetica').fillColor('#475569').text('GitHub: github.com/mezba132');
+      doc.moveDown(0.5);
+
+      // Horizontal Line
+      doc.strokeColor('#cbd5e1').lineWidth(0.8).moveTo(36, doc.y).lineTo(559, doc.y).stroke();
+      doc.moveDown(0.5);
+
+      // Profile Section
+      doc.fillColor('#1e1b4b').fontSize(10).font('Helvetica-Bold').text('PROFILE');
+      doc.moveDown(0.2);
+      doc.fillColor('#334155').fontSize(8.5).font('Helvetica').text(
+        'Dedicated and skilled Software Engineer with 5 years of professional experience delivering robust and highly scalable solutions. Core technical expertise centers on modern back-end development (Node.js/NestJS) and React.js/Next.js, complemented by proficiency in AWS cloud services and SQL/NoSQL databases. Skillfully manages the entire web development lifecycle from architecture to deployment.',
+        { align: 'left', lineGap: 1.5 }
+      );
+      doc.moveDown(0.5);
+
+      // Work Experience Section
+      doc.fillColor('#1e1b4b').fontSize(10).font('Helvetica-Bold').text('WORK EXPERIENCE');
+      doc.moveDown(0.3);
+
+      // Job 1
+      doc.fillColor('#0f172a').fontSize(9).font('Helvetica-Bold').text('Software Engineer (Mid Level) — Itech Soft Solutions', { continued: true });
+      doc.fillColor('#4338ca').fontSize(8.5).font('Helvetica-Bold').text('   (Jan 2025 - Present)');
+      doc.fillColor('#334155').fontSize(8.5).font('Helvetica')
+        .text('• Developed Decentralized Applications (dApps) and OpenAI/Gemini AI integrated projects.')
+        .text('• Architected scalable full-stack web solutions with NestJS, PostgreSQL, GraphQL/REST APIs, Web3.js & Next.js.')
+        .text('• Maintained rigorous code quality, testability, debugging, and cross-functional team execution.');
+      doc.moveDown(0.4);
+
+      // Job 2
+      doc.fillColor('#0f172a').fontSize(9).font('Helvetica-Bold').text('Executive Software Engineer — Fanfare Bangladesh Ltd.', { continued: true });
+      doc.fillColor('#4338ca').fontSize(8.5).font('Helvetica-Bold').text('   (Mar 2023 - Dec 2024)');
+      doc.fillColor('#334155').fontSize(8.5).font('Helvetica')
+        .text('• Engineered enterprise CRM backend logic (API design, security) & frontend UI/UX.')
+        .text('• Built robust microservices using NestJS, ReactJS, MongoDB, Docker, AWS & Robi Cloud.')
+        .text('• Led end-to-end delivery, system design, and cross-team developer mentoring.');
+      doc.moveDown(0.4);
+
+      // Job 3
+      doc.fillColor('#0f172a').fontSize(9).font('Helvetica-Bold').text('Software Engineer — Apsis Solution Ltd.', { continued: true });
+      doc.fillColor('#4338ca').fontSize(8.5).font('Helvetica-Bold').text('   (May 2021 - Feb 2023)');
+      doc.fillColor('#334155').fontSize(8.5).font('Helvetica')
+        .text('• Full-stack development for E-Commerce and EMS applications using NestJS, React.js (NextJS, Redux) & PostgreSQL.')
+        .text('• Configured AWS deployment pipelines (EC2, S3) and agile project tracking using Git and Trello.');
+      doc.moveDown(0.4);
+
+      // Job 4
+      doc.fillColor('#0f172a').fontSize(9).font('Helvetica-Bold').text('WordPress Developer — Freelance', { continued: true });
+      doc.fillColor('#4338ca').fontSize(8.5).font('Helvetica-Bold').text('   (Nov 2018 - Dec 2020)');
+      doc.fillColor('#334155').fontSize(8.5).font('Helvetica')
+        .text('• Developed custom themes, plugins, and WooCommerce online storefronts for client requirements.');
+      doc.moveDown(0.5);
+
+      // Education Section
+      doc.fillColor('#1e1b4b').fontSize(10).font('Helvetica-Bold').text('EDUCATION');
+      doc.moveDown(0.3);
+      doc.fillColor('#0f172a').fontSize(8.5).font('Helvetica-Bold').text('Bsc. in Computer Science and Software Engineering');
+      doc.fillColor('#4338ca').fontSize(8).font('Helvetica').text('American International University – Bangladesh (2013 - 2018)');
+      doc.moveDown(0.2);
+      doc.fillColor('#0f172a').fontSize(8.5).font('Helvetica-Bold').text('Higher Secondary Certificate (H.S.C)');
+      doc.fillColor('#4338ca').fontSize(8).font('Helvetica').text('Dr. Abdur Razzak Municipal College (2010 - 2012)');
+      doc.moveDown(0.5);
+
+      // Development Skills & Tools Section
+      doc.fillColor('#1e1b4b').fontSize(10).font('Helvetica-Bold').text('DEVELOPMENT SKILLS & TOOLS');
+      doc.moveDown(0.3);
+      doc.fillColor('#334155').fontSize(8.5).font('Helvetica')
+        .text('• Tech Stack: Node.js (NestJS, Express.js), PHP (Laravel), React.js (Next.js, Redux, Zustand), REST/GraphQL, Docker, PostgreSQL, MongoDB, MySQL, Firebase, WebSockets, Web3.js, OpenAI, Gemini AI.')
+        .text('• Cloud & DevOps: AWS (EC2, S3, RDS), Google Cloud Platform, DigitalOcean, Nginx, Linux/Ubuntu.')
+        .text('• Tools & Agile: VSCode, Postman, Swagger, Git, Jira, Slack, Trello, ClickUp.');
+      doc.moveDown(0.5);
+
+      // References Section
+      doc.fillColor('#1e1b4b').fontSize(10).font('Helvetica-Bold').text('REFERENCES');
+      doc.moveDown(0.3);
+      doc.fillColor('#0f172a').fontSize(8.5).font('Helvetica-Bold').text('Mahbubul Alam', { continued: true });
+      doc.fillColor('#475569').fontSize(8.5).font('Helvetica').text(' — Itech Soft Solution (Phone: 01713335016)');
+      doc.fillColor('#0f172a').fontSize(8.5).font('Helvetica-Bold').text('Musabbir Rahman', { continued: true });
+      doc.fillColor('#475569').fontSize(8.5).font('Helvetica').text(' — Apsis Solution Ltd (Phone: 01726315133)');
+
+      doc.end();
+    } catch (err) {
+      console.error('Error generating PDF:', err);
+      res.status(500).send('Failed to generate PDF resume');
+    }
+  });
+
   // AI Chat Assistant Route (Gemini Powered)
   app.post('/api/chat', async (req, res) => {
     const { message, history } = req.body;
@@ -187,6 +293,9 @@ Guidelines for AI response:
 
     return res.json({ text: reply });
   });
+
+  // Serve raw assets folder statically
+  app.use('/assets', express.static(path.join(process.cwd(), 'assets')));
 
   // ----------------------------------------------------
   // VITE DEV / PRODUCTION STATIC SERVER

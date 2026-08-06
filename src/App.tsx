@@ -26,7 +26,15 @@ export function App() {
     contactSubmissions: 48
   });
 
-  const [theme, setTheme] = useState<'dark' | 'light'>('dark');
+  const [theme, setTheme] = useState<'dark' | 'light'>(() => {
+    if (typeof window !== 'undefined') {
+      const saved = localStorage.getItem('app-theme');
+      if (saved === 'light' || saved === 'dark') {
+        return saved;
+      }
+    }
+    return 'dark';
+  });
   const [activeSection, setActiveSection] = useState<string>('home');
   const [aiAssistantOpen, setAiAssistantOpen] = useState<boolean>(false);
   const [commandPaletteOpen, setCommandPaletteOpen] = useState<boolean>(false);
@@ -39,6 +47,11 @@ export function App() {
     } else {
       document.documentElement.classList.remove('dark');
       document.documentElement.classList.add('light');
+    }
+    try {
+      localStorage.setItem('app-theme', theme);
+    } catch (e) {
+      // localStorage may fail in restricted sandboxes
     }
   }, [theme]);
 
@@ -97,6 +110,7 @@ export function App() {
   };
 
   const handleTriggerDownload = async () => {
+    // 1. Post analytics count asynchronously
     try {
       const res = await fetch('/api/analytics/download-resume', { method: 'POST' });
       if (res.ok) {
@@ -107,6 +121,34 @@ export function App() {
       }
     } catch (err) {
       // silent
+    }
+
+    // 2. Download PDF using Blob object URL to guarantee browser & iframe compatibility
+    try {
+      const res = await fetch('/api/resume/download');
+      if (!res.ok) {
+        throw new Error(`HTTP error ${res.status}`);
+      }
+
+      const blob = await res.blob();
+      const url = window.URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.style.display = 'none';
+      a.href = url;
+      a.download = 'Nokibul_Amin_Mezba_Software_Engineer_Resume.pdf';
+      document.body.appendChild(a);
+      a.click();
+
+      setTimeout(() => {
+        if (document.body.contains(a)) {
+          document.body.removeChild(a);
+        }
+        window.URL.revokeObjectURL(url);
+      }, 1500);
+    } catch (err) {
+      console.error('Blob PDF download failed, falling back to window location/open:', err);
+      // Fallback: direct window trigger
+      window.open('/api/resume/download', '_blank');
     }
   };
 

@@ -14,7 +14,8 @@ import {
   Mail,
   Award,
   BookOpen,
-  Wrench
+  Wrench,
+  FileText
 } from 'lucide-react';
 
 interface NavbarProps {
