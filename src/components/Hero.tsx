@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'motion/react';
+import fallbackPhoto from '../assets/photo.png';
 import {
   Sparkles,
   ArrowRight,
@@ -177,16 +178,12 @@ export const Hero: React.FC<HeroProps> = ({
           <div className="md:col-span-4 bg-[#0a0f1d] border border-white/10 rounded-3xl relative overflow-hidden min-h-[420px] group flex flex-col justify-between p-6 shadow-2xl">
             {/* Full Length Profile Image with Smooth Zoom-In Motion */}
             <img
-              src={data.avatarUrl}
+              src={data.avatarUrl || fallbackPhoto}
               alt={data.name}
               onError={(e) => {
                 const target = e.currentTarget;
-                if (!target.dataset.retried) {
-                  target.dataset.retried = '1';
-                  target.src = '/assets/photo.png';
-                } else if (target.dataset.retried === '1') {
-                  target.dataset.retried = '2';
-                  target.src = '/photo.png';
+                if (target.src !== fallbackPhoto) {
+                  target.src = fallbackPhoto;
                 }
               }}
               referrerPolicy="no-referrer"
