@@ -179,6 +179,16 @@ export const Hero: React.FC<HeroProps> = ({
             <img
               src={data.avatarUrl}
               alt={data.name}
+              onError={(e) => {
+                const target = e.currentTarget;
+                if (!target.dataset.retried) {
+                  target.dataset.retried = '1';
+                  target.src = '/assets/photo.png';
+                } else if (target.dataset.retried === '1') {
+                  target.dataset.retried = '2';
+                  target.src = '/photo.png';
+                }
+              }}
               referrerPolicy="no-referrer"
               className="absolute inset-0 w-full h-full object-cover object-top transition-transform duration-700 ease-out group-hover:scale-105 pointer-events-none"
             />
