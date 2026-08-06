@@ -271,4 +271,5 @@ Key Info about Mezba:
 });
 
 // Serve assets folder
+app.use('/assets', express.static(path.join(process.cwd(), 'public/assets')));
 app.use('/assets', express.static(path.join(process.cwd(), 'assets')));

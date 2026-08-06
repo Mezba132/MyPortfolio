@@ -59,7 +59,7 @@ export const Navbar: React.FC<NavbarProps> = ({
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 py-2.5 px-4 sm:px-6 bg-white/90 dark:bg-slate-900/80 border-b border-slate-200/80 dark:border-white/10 backdrop-blur-md shadow-sm transition-all duration-300">
-      <div className="w-[90%] mx-auto flex items-center justify-between">
+      <div className="w-[85%] mx-auto flex items-center justify-between">
         {/* Brand Logo */}
           {/* Brand Logo */}
           <button

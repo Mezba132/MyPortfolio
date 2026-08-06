@@ -19,7 +19,7 @@ interface CaseStudiesProps {
 export const CaseStudies: React.FC<CaseStudiesProps> = ({ caseStudies }) => {
   return (
     <section id="case-studies" className="py-20 relative overflow-hidden">
-      <div className="w-[92%] sm:w-[88%] lg:w-[80%] mx-auto px-6 sm:px-8 lg:px-10 relative z-10">
+      <div className="w-[85%] mx-auto px-4 sm:px-6 relative z-10">
         
         {/* Header */}
         <div className="text-center max-w-3xl mx-auto mb-16">

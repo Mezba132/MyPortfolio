@@ -26,7 +26,7 @@ export const Footer: React.FC<FooterProps> = ({
 
   return (
     <footer className="bg-slate-100 dark:bg-[#03060d] text-slate-600 dark:text-slate-400 pt-16 pb-12 border-t border-slate-200 dark:border-white/10 relative overflow-hidden">
-      <div className="w-[90%] mx-auto px-4 sm:px-6 relative z-10">
+      <div className="w-[85%] mx-auto px-4 sm:px-6 relative z-10">
         
         <div className="grid grid-cols-1 md:grid-cols-12 gap-10 pb-12 border-b border-slate-200 dark:border-white/10">
           

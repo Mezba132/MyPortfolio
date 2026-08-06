@@ -7,7 +7,9 @@ import {
   Send,
   CheckCircle2,
   AlertCircle,
-  Clock
+  Clock,
+  Copy,
+  Check
 } from 'lucide-react';
 import { PortfolioData } from '../types';
 
@@ -28,6 +30,17 @@ export const Contact: React.FC<ContactProps> = ({ data, onContactSubmitted }) =>
   const [loading, setLoading] = useState(false);
   const [submittedSuccess, setSubmittedSuccess] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
+  const [copiedEmail, setCopiedEmail] = useState(false);
+
+  const handleCopyEmail = (e: React.MouseEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+    if (data.email) {
+      navigator.clipboard.writeText(data.email);
+      setCopiedEmail(true);
+      setTimeout(() => setCopiedEmail(false), 2000);
+    }
+  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -64,7 +77,7 @@ export const Contact: React.FC<ContactProps> = ({ data, onContactSubmitted }) =>
 
   return (
     <section id="contact" className="py-20 relative overflow-hidden">
-      <div className="w-[90%] mx-auto px-4 sm:px-6 relative z-10">
+      <div className="w-[85%] mx-auto px-4 sm:px-6 relative z-10">
         
         {/* Header */}
         <div className="text-center max-w-3xl mx-auto mb-16">
@@ -100,18 +113,39 @@ export const Contact: React.FC<ContactProps> = ({ data, onContactSubmitted }) =>
               </h3>
 
               <div className="space-y-4">
-                <a
-                  href={`mailto:${data.email}`}
-                  className="flex items-center gap-4 p-4 rounded-2xl bg-slate-50 dark:bg-white/5 border border-slate-200 dark:border-white/10 hover:border-indigo-500 transition-colors group"
-                >
-                  <div className="w-12 h-12 rounded-xl bg-indigo-500/10 border border-indigo-500/20 text-indigo-600 dark:text-indigo-400 flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform">
-                    <Mail className="w-5 h-5" />
-                  </div>
-                  <div>
-                    <span className="text-[10px] font-bold uppercase text-slate-500 dark:text-slate-400 block">Email Address</span>
-                    <span className="text-sm font-bold text-slate-900 dark:text-white font-mono">{data.email}</span>
-                  </div>
-                </a>
+                <div className="flex items-center justify-between p-4 rounded-2xl bg-slate-50 dark:bg-white/5 border border-slate-200 dark:border-white/10 hover:border-indigo-500/80 transition-colors group relative">
+                  <a
+                    href={`mailto:${data.email}`}
+                    className="flex items-center gap-4 flex-1 min-w-0"
+                  >
+                    <div className="w-12 h-12 rounded-xl bg-indigo-500/10 border border-indigo-500/20 text-indigo-600 dark:text-indigo-400 flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform">
+                      <Mail className="w-5 h-5" />
+                    </div>
+                    <div className="truncate">
+                      <span className="text-[10px] font-bold uppercase text-slate-500 dark:text-slate-400 block">Email Address</span>
+                      <span className="text-sm font-bold text-slate-900 dark:text-white font-mono truncate">{data.email}</span>
+                    </div>
+                  </a>
+
+                  <button
+                    onClick={handleCopyEmail}
+                    type="button"
+                    className="ml-2 px-3 py-1.5 rounded-xl bg-indigo-50 dark:bg-indigo-500/10 hover:bg-indigo-100 dark:hover:bg-indigo-500/20 text-indigo-600 dark:text-indigo-400 text-xs font-semibold flex items-center gap-1.5 transition-all cursor-pointer relative shrink-0"
+                    title="Copy Email Address"
+                  >
+                    {copiedEmail ? (
+                      <>
+                        <Check className="w-3.5 h-3.5 text-emerald-500" />
+                        <span className="text-emerald-600 dark:text-emerald-400 font-bold">Copied!</span>
+                      </>
+                    ) : (
+                      <>
+                        <Copy className="w-3.5 h-3.5" />
+                        <span className="hidden sm:inline">Copy</span>
+                      </>
+                    )}
+                  </button>
+                </div>
 
                 <a
                   href={`tel:${data.phone}`}

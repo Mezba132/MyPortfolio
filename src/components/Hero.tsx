@@ -101,7 +101,7 @@ export const Hero: React.FC<HeroProps> = ({
       <ParticlesCanvas className="opacity-40" />
 
       {/* Main Bento Grid Container */}
-      <div className="w-[90%] mx-auto px-4 sm:px-6 relative z-10">
+      <div className="w-[85%] mx-auto px-4 sm:px-6 relative z-10">
         
         <div className="grid grid-cols-1 md:grid-cols-12 gap-4">
           
