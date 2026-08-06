@@ -178,14 +178,8 @@ export const Hero: React.FC<HeroProps> = ({
           <div className="md:col-span-4 bg-[#0a0f1d] border border-white/10 rounded-3xl relative overflow-hidden min-h-[420px] group flex flex-col justify-between p-6 shadow-2xl">
             {/* Full Length Profile Image with Smooth Zoom-In Motion */}
             <img
-              src={data.avatarUrl || fallbackPhoto}
+              src={fallbackPhoto}
               alt={data.name}
-              onError={(e) => {
-                const target = e.currentTarget;
-                if (target.src !== fallbackPhoto) {
-                  target.src = fallbackPhoto;
-                }
-              }}
               referrerPolicy="no-referrer"
               className="absolute inset-0 w-full h-full object-cover object-top transition-transform duration-700 ease-out group-hover:scale-105 pointer-events-none"
             />
